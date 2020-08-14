@@ -35,6 +35,7 @@ return (
 <View style={styles.container}>
 {this.state.openScanner?
 <RNCamera
+captureAudio={false}
 style={styles.preview}
 onBarCodeRead={this.state.scan?this.onBarCodeRead:null}
 ref={cam => this.camera = cam}
@@ -43,7 +44,7 @@ ref={cam => this.camera = cam}
  <Text style={{fontWeight:'bold',textAlign:'center',fontSize:25,}}>Barcode Scanner App</Text>
  }
 <TouchableOpacity onPress={() => this.setState({openScanner:!this.state.openScanner})} style={styles.bottomOverlay}>
-<Text style={{fontWeight:'bold',textAlign:'center',fontSize:15,color:'#FFF'}}>{this.state.openScanner? 'CLOSE BARCODE SCANNER' : 'OPEN BARCODE SCANNER'}</Text>
+<Text style={styles.buttonText}>{this.state.openScanner? 'CLOSE BARCODE SCANNER' : 'OPEN BARCODE SCANNER'}</Text>
 </TouchableOpacity>
 </View>
 )
@@ -64,15 +65,15 @@ preview: {
 height:'70%',
 alignItems: 'center'
 },
-cameraIcon: {
-margin: 5,
-height: 40,
-width: 40
+buttonText: {
+  fontWeight:'bold',
+  textAlign:'center',
+  fontSize:15,color:'#FFF'
 },
 bottomOverlay: {
   backgroundColor:'blue',
   padding:8,alignSelf:'center',
- width:'50%',
+ width:'60%',
  position:'absolute',bottom:50,
  borderRadius:6
 },
